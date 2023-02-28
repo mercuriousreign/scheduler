@@ -22,12 +22,7 @@ export default function useVisualMode(initial) {
       setMode(history[history.length-1]);
     }
     
-    //setHistory(history);
-    //console.log(history);
-  
   }
-
-
 
 
   return {mode,transition,back};
