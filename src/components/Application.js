@@ -5,7 +5,7 @@ import DayList from "./DayList";
 import InterviewerList from "./InterviewerList";
 import Appointment from "components/Appointment";
 import axios from "axios";
-import {getAppointmentsForDay , getInterview} from "../helpers/selectors"
+import {getAppointmentsForDay , getInterview, getInterviewersForDay} from "../helpers/selectors"
 
 
 // const appointments = {
@@ -89,16 +89,39 @@ export default function Application(props) {
       axios.get('http://localhost:8001/api/appointments'),
       axios.get('http://localhost:8001/api/interviewers')
     ]).then((all) => {
-      // console.log(all[0].data); // first
-      // console.log(all[1].data); // second
-      // console.log(all[2].data); // third
       setState(prev => ({...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }));
     });
   },[])
 
+  function bookInterview(id,interview) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    setState({
+      ...state,
+      appointments
+    });
+    
+    axios.put(`/api/appointments/${id}`,appointments)
+
+  }
+
+  function cancelInterview(id){
+    axios.delete(`/api/appointments/${id}`)
+  }
+  
+
 
 
   const appointments = getAppointmentsForDay(state, state.day);
+  const dayInterviewers = getInterviewersForDay(state, state.day);
 
 // console.log("selector function",appointments);
 const schedule = appointments.map((appointment) => {
@@ -109,7 +132,9 @@ const schedule = appointments.map((appointment) => {
       id={appointment.id}
       time={appointment.time}
       interview={interview}
-      interviewers={state.interviewers}
+      interviewers={dayInterviewers}
+      bookInterview={bookInterview}
+      cancelInterview={cancelInterview}
     />
   );
 });
@@ -117,12 +142,6 @@ const schedule = appointments.map((appointment) => {
   const dailyAppointments =  getAppointmentsForDay(state, state.day);
 
   const setDay = (day) => {setState({ ...state, day })};
-  // const setDays = (days) => {
-  //   setState(prev =>({...state,days}));
-  // }
-
-
-
 
   const schedule1 = dailyAppointments.map((appointment)=>{
     const interview = getInterview(state, appointment.interview);
@@ -145,7 +164,7 @@ const schedule = appointments.map((appointment) => {
           <DayList 
           days={state.days} 
           day={state.day} 
-          setDay={()=>{setDay(state.day)}}
+          setDay={setDay}
           />
         </nav>
         <img
