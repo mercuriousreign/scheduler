@@ -1,9 +1,9 @@
 import React from "react";
-export default function Show (props) {
-  const {interviewers,interview,onEdit, onDelete} = props;
-  const {student,interviewer} = props.interview
-  console.log("props inside the show",interviewers)
 
+/**Shows user the specific appointment info, also has button to edit or delete the appointment */
+export default function Show (props) {
+  const {interview,onEdit, onDelete} = props;
+  
 
   return (
   <main className="appointment__card appointment__card--show">
@@ -26,7 +26,7 @@ export default function Show (props) {
         className="appointment__actions-button"
         src="images/trash.png"
         alt="Delete"
-        onClick={onDelete}
+        onClick={()=>{onDelete(interview.id)}}
       />
     </section>
   </section>

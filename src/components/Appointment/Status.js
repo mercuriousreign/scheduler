@@ -1,5 +1,6 @@
 import React from "react";
 
+/**Animation place holder for booking or deleting appointment */
 export default function Status (props){
   const {message} = props;
 

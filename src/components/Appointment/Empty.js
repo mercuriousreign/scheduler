@@ -1,5 +1,6 @@
 import React from "react";
 
+/**Shows an add button for user to book interview in the specific slot */
 export default function Empty (props){
 
   return (
