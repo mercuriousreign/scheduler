@@ -2,15 +2,16 @@ import React from "react";
 import classNames from "classnames";
 import "styles/InterviewerListItem.scss"
 
+/**Renders individual interviewer's information such as their avatar and name */
 export default function InterviewerListItem (props) {
-  const {id,name,avatar,selected,setInterviewer} = props;
+  const {name,avatar,selected,setInterviewer} = props;
   let inteviewClass = classNames("interviewers__item",{"interviewers__item--selected":selected})
 
   return (
-    <li onClick={()=>setInterviewer(id)} className={inteviewClass}>
-      {avatar && <img className="interviwers__item-image"
+    <li selected={props.selected} onClick={setInterviewer} className={inteviewClass}>
+      {avatar && <img className="interviewers__item-image"
       src={avatar}
-      alot={name}/>}
+      alt={name}/>}
       {selected && name} 
     </li>
   )
