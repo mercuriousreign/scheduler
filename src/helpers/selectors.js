@@ -1,12 +1,10 @@
+/**Gets all the appointments based on day key appointments values */
 export function getAppointmentsForDay(state, day) {
   let target = ""
-  let result = [];
-  // console.log(state);
-  // console.log(day);
-  let placeHolder = Object.values(state.days);
+  let daysHolder = Object.values(state.days);
 
   
-  for (let i of placeHolder) {
+  for (let i of daysHolder) {
     if (i.name === day){
       target = i;
     }
@@ -16,33 +14,40 @@ export function getAppointmentsForDay(state, day) {
     return [];
   }
 
-  let placeHolder2 = Object.values(target.appointments);
-  //console.log("placeholder2", placeHolder2);
-  for (let i of placeHolder2){
-    result.push(state.appointments[i])
-  }
+  const allAppointments = target.appointments;
+  console.log("appointments length",target.appointments.length)
+  return allAppointments.map(id => state.appointments[id])
 
-  return result;
 }
 
+/**Returns specific interview information */
 export function getInterview(state,interview) {
 
   if(interview){
-    console.log("somethings the name",state.interviewers[interview.interviewer].name)
     return {"student": interview.student,
             "interviewer": state.interviewers[interview.interviewer].name}
   }
 
-  console.log(state.interviewers);
-
   return null;
 }
 
-// {  
-//   "student": "Lydia Miller-Jones",
-//   "interviewer": {  
-//     "id": 1,
-//     "name": "Sylvia Palmer",
-//     "avatar": "https://i.imgur.com/LpaY82x.png"
-//   }
-// }
+/**Gets all the interviewers that are available for that day based on day key interviewer values */
+export function getInterviewersForDay (state,day) {
+  let target = ""
+  let daysHolder = Object.values(state.days);
+  for (let i of daysHolder) {
+    if (i.name === day){
+      target = i;
+    }
+  }
+
+  if (target==="") {
+    return [];
+  }
+
+
+  let interviewers = target.interviewers;
+  return interviewers.map(id => state.interviewers[id])
+
+  
+}
