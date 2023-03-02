@@ -2,8 +2,11 @@
 
 Interview Scheduler is a singlepage application made using React. The components were built individually using Storybook. The app allows user to book inteviews in a timeslot in each individual days. Allowing for input of student name and individual interviewer
 
+Main functionality
 ![Interview edit](https://github.com/mercuriousreign/scheduler/blob/master/docs/Interview%20Book.png?raw=true)
+User interactive popups
 ![Interview delete](https://github.com/mercuriousreign/scheduler/blob/master/docs/Delete%20Interview.png?raw=true)
+Fullview
 ![Full view](https://github.com/mercuriousreign/scheduler/blob/master/docs/Interview%20Scheduler.png?raw=true)
 
 ## Dpendencies
