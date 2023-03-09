@@ -33,7 +33,7 @@ export default function Appointment(props) {
   /**Loads a deleting animation alongside canceling the interview, transition to add when the inteview has deleted*/
   function deleteInterview(id) {
 
-    transition(DELETE,true);
+    transition(DELETE, true);
     props.cancelInterview(id).then(() => transition(EMPTY)).catch(error => transition(ERROR_DELETE, true));
 
 

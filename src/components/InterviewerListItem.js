@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import "styles/InterviewerListItem.scss"
+import "styles/InterviewerListItem.scss";
 
 /**Renders individual interviewer's information such as their avatar and name */
 export default function InterviewerListItem (props) {
