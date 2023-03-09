@@ -1,27 +1,23 @@
 /**Gets all the appointments based on day key appointments values */
 export function getAppointmentsForDay(state, day) {
-  let target = ""
-  let daysHolder = Object.values(state.days);
-
-
-  for (let i of daysHolder) {
-    if (i.name === day) {
-      target = i;
+  const results = [];
+  for (const element of state.days) {
+    if (
+      element.name === day) {
+      for (const value of element.appointments) {
+        if (state.appointments[value]) {
+          results.push(state.appointments[value]);
+        }
+      }
     }
   }
-
-  if (target === "") {
-    return [];
-  }
-
-  const allAppointments = target.appointments;
-  return allAppointments.map(id => state.appointments[id])
+  return results;
 
 }
 
 /**Returns specific interview information */
 export function getInterview(state, interview) {
-  if (interview && state.interviewers[interview.interviewer]) {
+  if (interview) {
     return {
       "student": interview.student,
       "interviewer": state.interviewers[interview.interviewer]
@@ -32,21 +28,18 @@ export function getInterview(state, interview) {
 
 /**Gets all the interviewers that are available for that day based on day key interviewer values */
 export function getInterviewersForDay(state, day) {
-  let target = ""
-  let daysHolder = Object.values(state.days);
-  for (let i of daysHolder) {
-    if (i.name === day) {
-      target = i;
+  const results = [];
+  for (const element of state.days) {
+    if (
+      element.name === day) {
+      for (const value of element.interviewers) {
+        if (state.interviewers[value]) {
+          results.push(state.interviewers[value]);
+        }
+      }
     }
   }
-
-  if (target === "") {
-    return [];
-  }
-
-
-  let interviewers = target.interviewers;
-  return interviewers.map(id => state.interviewers[id])
+  return results;
 
 
 }

@@ -79,7 +79,7 @@ export default function useApplicationData (initial) {
   /**Updates spot info, is called by both bookinterview and cancelinterview function */
   function updateSpot(state,appointments) {
     
-    const dayObj = state.days.find(d => d.name === state.day)
+    const dayObj = state.days.find(d => d.name === state.day);
     
     if (!dayObj){
       return state.days;
