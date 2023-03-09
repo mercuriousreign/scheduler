@@ -2,29 +2,31 @@ import { useState } from "react"
 
 /**Hook for changing mode for individual appointment item in the list */
 export default function useVisualMode(initial) {
-  const [mode,setMode] = useState(initial);
-  const [history,setHistory] = useState([initial]);
+  const [mode, setMode] = useState(initial);
+  const [history, setHistory] = useState([initial]);
 
-  function transition(mode, replace = false) {
-    
-    setMode(mode);
-    if (replace){
-      history.pop();
+  function transition(newMode, replace = false) {
+
+    setMode(newMode);
+    if (replace) {
+      newMode = history[history.length - 1];
+    } else {
+      history.push(newMode);
     }
-    setHistory([...history,mode]);
+    setHistory([...history]);
   }
 
   function back() {
-    if (history.length>0) {
+
+    if (history.length > 1) {
       history.pop();
+      setMode(history[history.length - 1]);
+      setHistory([...history]);
     }
-    
-    if (mode !== initial){
-      setMode(history[history.length-1]);
-    }
-    
+
+
   }
 
 
-  return {mode,transition,back};
+  return { mode, transition, back };
 }

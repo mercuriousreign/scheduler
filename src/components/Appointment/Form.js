@@ -49,21 +49,15 @@ export default function Form(props) {
         onChange={(event)=>setStudent(event.target.value)}
         value ={student}
         data-testid="student-name-input"
-        /*
-          This must be a controlled component
-          your code goes here
-        */
       />
     </form>
     <section className="appointment__validation">{error}</section>
     <InterviewerList interviewers={interviewers} onChange={setInterviewer} value={interviewer}
-      /* your code goes here */
     />
   </section>
   <section className="appointment__card-right">
     <section className="appointment__actions">
       <Button danger onClick={cancel}>Cancel</Button>
-      {/* ()=>{onSave(student,interviewer)} */}
       <Button confirm onClick={validate}>Save</Button>
     </section>
   </section>
