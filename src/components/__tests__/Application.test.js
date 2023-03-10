@@ -1,6 +1,6 @@
 import React from "react";
 
-import {getByPlaceholderText, getByAltText, getAllByTestId, getByText, waitForElement, fireEvent,render, cleanup } from "@testing-library/react";
+import { getByPlaceholderText, getByAltText, getAllByTestId, getByText, waitForElement, fireEvent, render, cleanup } from "@testing-library/react";
 
 import Application from "components/Application";
 
