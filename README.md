@@ -14,6 +14,12 @@ Fullview
 - axios
 - @testing-library/react-hooks
 - react-test-renderer
+- react
+- react-dom
+- react-hooks-testing-library
+- react-scripts
+- normalize.css
+   
 
 
 ## Setup
