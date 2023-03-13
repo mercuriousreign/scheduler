@@ -7,9 +7,8 @@ import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "../h
 import useApplicationData from "hooks/useApplicationData";
 
 /**Initial entry and rendering for application */
-
 export default function Application(props) {
-  /**setsup state watch for variables and functions */
+  /**Setup state watch for variables and functions */
   const {
     state,
     setDay,

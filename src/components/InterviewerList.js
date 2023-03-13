@@ -7,15 +7,17 @@ import PropTypes from 'prop-types';
 export default function InterviewerList(props) {
   const { interviewers, onChange } = props;
 
-
   const individuals = interviewers?.map((interviewer) => {
     return (
       <InterviewerListItem
         key={interviewer.id}
         name={interviewer.name}
         avatar={interviewer.avatar}
-        selected={interviewer.id === props.value || interviewer.name === props.value}
-        setInterviewer={() => { onChange(interviewer.id) }}
+        selected={props.value === interviewer.id}
+        setInterviewer={() => {
+          onChange(interviewer.id)
+
+        }}
       />
     )
   })

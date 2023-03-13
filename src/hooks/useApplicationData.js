@@ -96,7 +96,6 @@ export default function useApplicationData(initial) {
       }
 
     }
-
     const day = { ...dayObj, spots };
     const days = state.days.map(d => d.name === state.day ? day : d);
 
