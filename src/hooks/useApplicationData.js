@@ -13,9 +13,6 @@ export default function useApplicationData(initial) {
   /**Finish geting data from api without constantly changing state */
   useEffect(() => {
     Promise.all([
-      // axios.get('http://localhost:8001/api/days'),
-      // axios.get('http://localhost:8001/api/appointments'),
-      // axios.get('http://localhost:8001/api/interviewers')
       axios.get('/api/days'),
       axios.get('/api/appointments'),
       axios.get('/api/interviewers')
@@ -41,7 +38,6 @@ export default function useApplicationData(initial) {
     };
 
     return axios.put(`/api/appointments/${id}`, { interview }).then((prev) => {
-      //refreshData();
 
       const days = updateSpot(state, appointments, id);
       setState(prev => ({
