@@ -69,13 +69,13 @@ storiesOf("DayList", module)
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
   })
   .add("Monday", () => (
-    <DayList days={days} value={"Monday"} onChange={action("setDay")} />
+    <DayList days={days} day={"Monday"} onChange={action("setDay")} />
   ))
   .add("Tuesday", () => (
-    <DayList days={days} value={"Tuesday"} onChange={action("setDay")} />
+    <DayList days={days} day={"Tuesday"} onChange={action("setDay")} />
   ))
   .add("Wednesday", () => (
-    <DayList days={days} value={"Wednesday"} onChange={action("setDay")} />
+    <DayList days={days} day={"Wednesday"} onChange={action("setDay")} />
   ));
 
 
@@ -152,7 +152,7 @@ storiesOf("Appointment", module)
   .add("Appointment with Time", () => <Appointment time="12pm" />)
   .add("Header with time", () => <Header time="12pm" />)
   .add("Empty", () => (<Empty onAdd={action("onAdd")} />))
-  .add("Show", () => (<Show student="Lydia Miller-Jones" interviewer="Sylvia Palmer" onEdit={action("onEdit")} onDelete={action("onDelete")} />))
+  .add("Show", () => (<Show interview ={{student : "Lydia Miller-Jones" , interviewer : "Sylvia Palmer"}} onEdit={action("onEdit")} onDelete={action("onDelete")} />))
   .add("Confirm", () => (<Confirm onCancel={action("onCancel")} onConfirm={action("onConfirm")} />))
   .add("Status", () => (<Status message="Delete" />))
   .add("Error", () => (<Error message="Could not delete appointment" onClose={action("onClose")} />))
